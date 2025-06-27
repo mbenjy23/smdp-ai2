@@ -11,6 +11,7 @@ from textwrap import wrap
 
 # Clé API OpenAI en dur (remplace par la tienne)
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+port = int(os.environ.get("PORT", 5000))  # utilise 5000 en local par défaut
 
 twilio_sid = os.environ.get("TWILIO_SID")
 twilio_token = os.environ.get("TWILIO_TOKEN")
@@ -121,5 +122,5 @@ def whatsapp_webhook():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=False)
+    app.run(host="0.0.0.0", port=port, debug=True, use_reloader=False)
 
